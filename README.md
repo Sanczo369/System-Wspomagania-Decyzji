@@ -33,3 +33,15 @@ o Oś Y: liczba przestępstw lub wartość wskaźnika.
 5. Testowanie i optymalizacja
 o Program testowany pod kątem poprawności przetwarzania danych.
 o Optymalizacja działania na maszynach uczelnianych i prywatnych.
+## 4. Testowe Uruchomienie
+Aby zweryfikować poprawność działania systemu oraz ocenić jego funkcjonalność,
+konieczne jest przeprowadzenie testowego uruchomienia. Proces ten obejmuje
+spełnienie określonych wymagań technicznych, instalację niezbędnych bibliotek oraz
+wykonanie kilku kroków w celu prawidłowego działania aplikacji.
+- Wymagania:
+• Python 3.13
+• Biblioteki: pandas, numpy, matplotlib, sklearn, tkinter
+- Uruchomienie:
+1. Upewnić się, że plik dane.csv znajduje się w tym samym folderze co skrypt.
+2. Uruchomić main.py w środowisku Python (python main.py).
+3. Wybierać powiat i kategorię, generować wykresy.
