@@ -45,3 +45,13 @@ wykonanie kilku kroków w celu prawidłowego działania aplikacji.
 1. Upewnić się, że plik dane.csv znajduje się w tym samym folderze co skrypt.
 2. Uruchomić main.py w środowisku Python (python main.py).
 3. Wybierać powiat i kategorię, generować wykresy.
+
+## 5. Ryzyka
+Analiza danych dotyczących przestępczości oraz polityki bezpieczeństwa jest
+obarczona szeregiem czynników ryzyka, które mogą wpływać na ich rzetelność,
+interpretację i porównywalność w czasie. Powody wpływające na dane uzyskane:
+• Nowelizacje kodeksu karnego i polityki bezpieczeństwa
+• Pandemia COVID-19
+• Nowe metody śledzenia i raportowania przestępstw
+• Kryzys gospodarczy
+• Migracje i zmiany demograficzne
