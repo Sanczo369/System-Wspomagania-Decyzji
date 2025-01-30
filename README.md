@@ -15,3 +15,21 @@ Kategorie przestępstw obejmują m.in.:
 • Przestępstwa gospodarcze – np. oszustwa podatkowe, korupcja.
 Dane obejmują okres od 2013 do 2023 roku.
 Format pliku: CSV, wartości oddzielone średnikami ;.
+## 3. Opis Realizacji Projektu
+1. Wczytanie danych
+o Przetworzenie struktury pliku CSV.
+o Usunięcie zbędnych znaków i spacji.
+o Wyodrębnienie kategorii i lat.
+2. Interaktywna analiza danych
+o Użytkownik wybiera powiat oraz kategorię przestępczości z listy.
+o System filtruje dane i przygotowuje je do analizy.
+3. Budowa modelu predykcyjnego dla analizy trendów przestępczości
+o Regresja liniowa używana do przewidywania wartości na kolejne lata.
+o Algorytm analizuje dane historyczne i identyfikuje trend.
+4. Wizualizacja wyników
+o Wyniki prezentowane są w postaci wykresu liniowego.
+o Oś X: lata (np. 2013-2023 + prognoza do 2028).
+o Oś Y: liczba przestępstw lub wartość wskaźnika.
+5. Testowanie i optymalizacja
+o Program testowany pod kątem poprawności przetwarzania danych.
+o Optymalizacja działania na maszynach uczelnianych i prywatnych.
