@@ -77,3 +77,26 @@ def generate_prediction():
 
     if region_name and category:
         predictions = predict_trends(region_name, category)
+
+# Interfejs graficzny
+root = tk.Tk()
+root.title("System Wsparcia Decyzji")
+
+# Wybór regionu
+tk.Label(root, text="Wybierz powiat:").pack()
+region_var = tk.StringVar()
+region_dropdown = ttk.Combobox(root, textvariable=region_var, width=100)
+region_dropdown['values'] = df["Powiat"].unique().tolist()
+region_dropdown.pack()
+
+# Wybór kategorii
+tk.Label(root, text="Wybierz kategorię:").pack()
+category_var = tk.StringVar()
+category_dropdown = ttk.Combobox(root, textvariable=category_var, width=100)
+category_dropdown['values'] = kategorie
+category_dropdown.pack()
+
+# Przycisk do generowania prognozy
+tk.Button(root, text="Generuj prognozę", command=generate_prediction).pack()
+
+root.mainloop()
