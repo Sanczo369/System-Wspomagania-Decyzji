@@ -69,3 +69,11 @@ def predict_trends(region_name, category):
     plt.grid(True)
     plt.show()
     return dict(zip(future_years.flatten(), predictions))
+
+# Tworzenie interfejsu użytkownika (Tkinter)
+def generate_prediction():
+    region_name = region_var.get()
+    category = category_var.get()
+
+    if region_name and category:
+        predictions = predict_trends(region_name, category)
