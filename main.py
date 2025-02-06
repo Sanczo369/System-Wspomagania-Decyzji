@@ -1,6 +1,9 @@
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.svm import SVR
+from sklearn.neural_network import MLPRegressor
 import matplotlib.pyplot as plt
 import tkinter as tk
 from tkinter import ttk
@@ -42,13 +45,34 @@ def predict_trends(region_name, category):
     X = region_data[["Year"]]
     y = region_data["Value"]
 
-    model = LinearRegression()
-    model.fit(X, y)
+    # Model liniowy
+    linear_model = LinearRegression()
+    linear_model.fit(X, y)
+
+    # Model Random Forest
+    rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
+    rf_model.fit(X, y)
+
+    # Model SVR
+    svr_model = SVR(kernel='rbf', C=100, gamma=0.1, epsilon=.1)
+    svr_model.fit(X, y)
+
+    # Model sieci neuronowej (MLPRegressor)
+    nn_model = MLPRegressor(hidden_layer_sizes=(10, 10), max_iter=1000, random_state=42)
+    nn_model.fit(X, y)
+
+    # Model Gradient Boosting
+    gb_model = GradientBoostingRegressor(n_estimators=100, random_state=42)
+    gb_model.fit(X, y)
 
     # Prognoza do 2028 roku
     future_years = np.array(range(int(region_data["Year"].max()) + 1, 2029)).reshape(-1, 1)
     future_df = pd.DataFrame(future_years, columns=["Year"])
-    predictions = model.predict(future_df)
+    linear_predictions = linear_model.predict(future_df)
+    rf_predictions = rf_model.predict(future_df)
+    svr_predictions = svr_model.predict(future_df)
+    nn_predictions = nn_model.predict(future_df)
+    gb_predictions = gb_model.predict(future_df)
 
     plt.figure(figsize=(10, 5))
 
@@ -57,10 +81,30 @@ def predict_trends(region_name, category):
     for i, txt in enumerate(y):
         plt.text(X.iloc[i, 0], y.iloc[i], f'{int(txt)}', fontsize=9, ha='right', va='bottom')
 
-    # Prognoza
-    plt.scatter(future_years, predictions, color='red', label='Prognoza', s=50, marker='x')
-    for i, txt in enumerate(predictions):
+    # Prognoza liniowa
+    plt.scatter(future_years, linear_predictions, color='red', label='Prognoza liniowa', s=50, marker='x')
+    for i, txt in enumerate(linear_predictions):
         plt.text(future_years[i, 0], txt, f'{int(txt)}', fontsize=9, ha='left', va='bottom', color='red')
+
+    # Prognoza Random Forest
+    plt.scatter(future_years, rf_predictions, color='green', label='Prognoza Random Forest', s=50, marker='o')
+    for i, txt in enumerate(rf_predictions):
+        plt.text(future_years[i, 0], txt, f'{int(txt)}', fontsize=9, ha='left', va='bottom', color='green')
+
+    # Prognoza SVR
+    plt.scatter(future_years, svr_predictions, color='purple', label='Prognoza SVR', s=50, marker='s')
+    for i, txt in enumerate(svr_predictions):
+        plt.text(future_years[i, 0], txt, f'{int(txt)}', fontsize=9, ha='left', va='bottom', color='purple')
+
+    # Prognoza sieci neuronowej
+    plt.scatter(future_years, nn_predictions, color='orange', label='Prognoza sieci neuronowej', s=50, marker='^')
+    for i, txt in enumerate(nn_predictions):
+        plt.text(future_years[i, 0], txt, f'{int(txt)}', fontsize=9, ha='left', va='bottom', color='orange')
+
+    # Prognoza Gradient Boosting
+    plt.scatter(future_years, gb_predictions, color='brown', label='Prognoza Gradient Boosting', s=50, marker='d')
+    for i, txt in enumerate(gb_predictions):
+        plt.text(future_years[i, 0], txt, f'{int(txt)}', fontsize=9, ha='left', va='bottom', color='brown')
 
     plt.xlabel('Rok')
     plt.ylabel('Liczba przestępstw')
@@ -68,7 +112,7 @@ def predict_trends(region_name, category):
     plt.legend()
     plt.grid(True)
     plt.show()
-    return dict(zip(future_years.flatten(), predictions))
+    return dict(zip(future_years.flatten(), gb_predictions.flatten()))
 
 # Tworzenie interfejsu użytkownika (Tkinter)
 def generate_prediction():
