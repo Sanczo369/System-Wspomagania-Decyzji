@@ -33,6 +33,7 @@ o Oś Y: liczba przestępstw lub wartość wskaźnika.
 5. Testowanie i optymalizacja
 o Program testowany pod kątem poprawności przetwarzania danych.
 o Optymalizacja działania na maszynach uczelnianych i prywatnych.
+
 ## 4. Testowe Uruchomienie
 Aby zweryfikować poprawność działania systemu oraz ocenić jego funkcjonalność,
 konieczne jest przeprowadzenie testowego uruchomienia. Proces ten obejmuje
@@ -55,3 +56,10 @@ interpretację i porównywalność w czasie. Powody wpływające na dane uzyskan
 • Nowe metody śledzenia i raportowania przestępstw
 • Kryzys gospodarczy
 • Migracje i zmiany demograficzne
+
+## 6. Prognozy wykorzystane w projekcie
+1. Prognoza liniowa
+2. Prognoza Random Forest
+3. Prognoza SVR
+4. Prognoza sieci neuronowej
+5. Prognoza Gradient Boosting
